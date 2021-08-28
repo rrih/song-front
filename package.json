@@ -1,0 +1,29 @@
+{
+  "name": "managedby-next",
+  "version": "0.0.1",
+  "description": "nextjs",
+  "repository": "git@github.com:rrih/managedby-next.git",
+  "author": "rrih <rsklv@icloud.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc",
+    "format": "prettier --write ./src/**/**/*.{ts,tsx} ./src/**/*.{ts,tsx}"
+  },
+  "dependencies": {
+    "next": "latest",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.21",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
+    "typescript": "4.0",
+    "prettier": "^2.2.1",
+    "pretty-quick": "^3.1.0"
+  }
+}

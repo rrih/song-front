@@ -1,0 +1,3 @@
+## managedby-next
+
+Next.js
