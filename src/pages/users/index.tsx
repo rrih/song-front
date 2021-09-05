@@ -1,6 +1,8 @@
 import React from 'react'
 
-const IndexPage = () => {
+// ログイン用APIを叩く
+
+const UserIndexPage: React.FC<Props> = ({ items }: Props) => {
 	return (
 		<React.Fragment>
 			<h1>Hello Next.js 👋</h1>
@@ -11,4 +13,4 @@ const IndexPage = () => {
 	)
 }
 
-export default IndexPage
+export default UserIndexPage
