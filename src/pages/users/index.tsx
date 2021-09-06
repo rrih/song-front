@@ -2,7 +2,7 @@ import React from 'react'
 
 // ログイン用APIを叩く
 
-const UserIndexPage: React.FC<Props> = ({ items }: Props) => {
+const UserIndexPage: React.FC = () => {
 	return (
 		<React.Fragment>
 			<h1>Hello Next.js 👋</h1>
