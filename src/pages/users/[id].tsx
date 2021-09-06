@@ -2,6 +2,8 @@ import { GetServerSideProps } from "next"
 import { findUserById } from "../../api/users"
 import { User } from "../../interfaces/User"
 import { useState, ReactNode, FC } from "react";
+import Cookie from 'js-cookie';
+import Layout from "../../components/Layout";
 
 interface Props {
     user: User
@@ -9,34 +11,42 @@ interface Props {
 
 const ViewUser = ({ user }): JSX.Element => {
     // TODO: 認証挟む
+    const [isLogin, setIsLogin] = useState(!!Cookie.get('token'))
+    // console.log(Cookie.get('token'))
     const { data } = user
     const [viewUser, setViewUser] = useState<User>(data)
     return (
         <>
-            <h1>ユーザー詳細画面</h1>
-            <div>
-                <div>
-                    id: {viewUser?.ID}
-                </div>
-                <div>
-                    name: {viewUser?.Name}
-                </div>
-                <div>
-                    email: {viewUser?.Email}
-                </div>
-                <div>
-                    password: {viewUser?.Password}
-                </div>
-                <div>
-                    created: {viewUser?.Created}
-                </div>
-                <div>
-                    modified: {viewUser?.Modified}
-                </div>
-                <div>
-                    deleted: {viewUser?.Deleted ?? "なし"}
-                </div>
-            </div>
+            {
+                isLogin
+            ?   <>
+                    <h1>ユーザー詳細画面</h1>
+                    <div>
+                        <div>
+                            id: {viewUser?.ID}
+                        </div>
+                        <div>
+                            name: {viewUser?.Name}
+                        </div>
+                        <div>
+                            email: {viewUser?.Email}
+                        </div>
+                        <div>
+                            password: {viewUser?.Password}
+                        </div>
+                        <div>
+                            created: {viewUser?.Created}
+                        </div>
+                        <div>
+                            modified: {viewUser?.Modified}
+                        </div>
+                        <div>
+                            deleted: {viewUser?.Deleted ?? "なし"}
+                        </div>
+                    </div>
+                </>
+            :   'ログインしてください'
+            }
         </>
     )
 };

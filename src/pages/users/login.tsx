@@ -3,7 +3,7 @@ import urljoin from "url-join";
 import Cookie from 'js-cookie';
 import * as axiosUtil from '../../lib/axios'
 import { AxiosResponse } from "axios";
-import { useRouter } from 'next/router';
+import Router from 'next/router';
 
 interface LoginForm {
 	email: string
@@ -13,7 +13,7 @@ interface LoginForm {
 const LoginPage: React.FC = () => {
 	const [loginForm, setLoginForm] = useState<LoginForm>({email: "", password: ""});
 	const [loginErrorMessage, setLoginErrorMessage] = useState<string>("")
-	const router = useRouter()
+	// const router = useRouter()
 
 	useEffect(() => {
 		handleInputChange
@@ -53,6 +53,7 @@ const LoginPage: React.FC = () => {
 			// @ts-ignore
 			const token = res?.data?.Token
 			Cookie.set('token', token) // cookieをセット
+			Router.push('/')
 		}
 		catch (e) {
 			setLoginErrorMessage(e.message)
@@ -76,6 +77,7 @@ const LoginPage: React.FC = () => {
 				setLoginErrorMessage("")
 				return res
 			}).catch((err) => {
+				// TODO: エラーメッセージの分岐をswitch文で書き直す
 				if (err.response.status === 401) {
 					throw new Error('メールアドレスまたはパスワードどちらか正しくないです')
 				}
