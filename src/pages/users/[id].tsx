@@ -1,9 +1,9 @@
 import { GetServerSideProps } from "next"
 import { findUserById } from "../../api/users"
 import { User } from "../../interfaces/User"
-import { useState, ReactNode, FC } from "react";
+import { useState } from "react";
 import Cookie from 'js-cookie';
-import Layout from "../../components/Layout";
+// import Layout from "../../components/Layout";
 
 interface Props {
     user: User
@@ -11,14 +11,14 @@ interface Props {
 
 const ViewUser = ({ user }): JSX.Element => {
     // TODO: 認証挟む
-    const [isLogin, setIsLogin] = useState(!!Cookie.get('token'))
+    // const [isLogin, setIsLogin] = useState(!!Cookie.get('token'))
     // console.log(Cookie.get('token'))
     const { data } = user
     const [viewUser, setViewUser] = useState<User>(data)
     return (
         <>
             {
-                isLogin
+                Cookie.get('token')
             ?   <>
                     <h1>ユーザー詳細画面</h1>
                     <div>
