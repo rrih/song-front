@@ -11,7 +11,8 @@
     "build": "next build",
     "start": "next start",
     "type-check": "tsc",
-    "format": "prettier --write ./src/**/**/*.{ts,tsx} ./src/**/*.{ts,tsx}"
+    "format": "prettier --write ./src/**/**/*.{ts,tsx} ./src/**/*.{ts,tsx}",
+    "export": "next export"
   },
   "dependencies": {
     "axios": "^0.21.1",
