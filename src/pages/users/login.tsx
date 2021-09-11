@@ -68,7 +68,7 @@ const LoginPage: React.FC = () => {
 	 * @return Promise<AxiosResponse<any>>　エラーの場合空、ログイン成功の場合トークン入りのデータが返される
 	 */
 	const login = async (loginForm: LoginForm) => {
-		const url = urljoin('/api/v1/users/signin/')
+		const url = urljoin('/api/v1/auth/login/')
 		const res = await axiosUtil
 			.instance
 			.post(url, loginForm)
@@ -85,12 +85,45 @@ const LoginPage: React.FC = () => {
 		return res
 	}
 	return (
-		<>
-			<h1>ログイン</h1>
-			メールアドレスとパスワードを入力してください
-			<form onSubmit={handleSubmit}>
-				<div>
-					<label htmlFor="email">email</label>
+		<div className="loginBody">
+			<style jsx>{`
+				:global(.loginMessage) {
+					text-align: center;
+					background-color: #22272e;
+					color: #cdd9e5;
+					border-bottom: solid 0.1em #adbac7;
+				}
+				.inputForm {
+					border: 2px solid #ccc;
+					border-radius: 0px;
+					height: 25px;
+					width: 100%;
+					background-color: #ccc;
+				}
+				.inputFormParent {
+					text-align: center;
+					margin-bottom: 10px;
+				}
+				.formLabel {
+					float: left;
+				}
+				.inputFormRoot {
+					width: 75%;
+					margin: auto;
+				}
+				.loginButton {
+					border: 2px #adbac7 solid;
+				}
+				.loginBody {
+					background-color: #22272e;
+					color: #adbac7;
+				}
+			`}</style>
+			<h1 className="loginMessage">ログイン</h1>
+			<p>メールアドレスとパスワードを入力してください</p>
+			<form onSubmit={handleSubmit} className="inputFormRoot">
+				<div className="inputFormParent">
+					<label htmlFor="email" className="formLabel">email</label>
 					<input
 						type="email"
 						id="email"
@@ -98,10 +131,11 @@ const LoginPage: React.FC = () => {
 						onChange={handleInputChange}
 						value={loginForm.email}
 						placeholder="roi@roiroi.dev"
+						className="inputForm"
 					/>
 				</div>
-				<div>
-					<label htmlFor="password">password</label>
+				<div className="inputFormParent">
+					<label htmlFor="password" className="formLabel">password</label>
 					<input
 						type="password"
 						id="password"
@@ -109,12 +143,13 @@ const LoginPage: React.FC = () => {
 						onChange={handleInputChange}
 						value={loginForm.password}
 						placeholder="********"
+						className="inputForm"
 					/>
 				</div>
-				<button type="submit">Login</button>
+				<button type="submit" className="loginButton">Login</button>
 				{loginErrorMessage}
 			</form>
-		</>
+		</div>
 	)
 }
 
