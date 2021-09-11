@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react"
-import urljoin from "url-join";
-import Cookie from 'js-cookie';
+import { useState, useEffect } from 'react'
+import urljoin from 'url-join'
+import Cookie from 'js-cookie'
 import * as axiosUtil from '../../lib/axios'
-import { AxiosResponse } from "axios";
-import Router from 'next/router';
+import { AxiosResponse } from 'axios'
+import Router from 'next/router'
 
 interface LoginForm {
 	email: string
@@ -11,8 +11,8 @@ interface LoginForm {
 }
 
 const LoginPage: React.FC = () => {
-	const [loginForm, setLoginForm] = useState<LoginForm>({email: "", password: ""});
-	const [loginErrorMessage, setLoginErrorMessage] = useState<string>("")
+	const [loginForm, setLoginForm] = useState<LoginForm>({ email: '', password: '' })
+	const [loginErrorMessage, setLoginErrorMessage] = useState<string>('')
 	// const router = useRouter()
 
 	useEffect(() => {
@@ -28,10 +28,10 @@ const LoginPage: React.FC = () => {
 		e.persist()
 		setLoginForm({
 			...loginForm,
-			[e.target.name]: e.target.value,
+			[e.target.name]: e.target.value
 		})
 	}
-	
+
 	/**
 	 * TODO: 多分こいつはUI層におかない方がいい
 	 * ログインボタンを押したに発火するイベント
@@ -54,8 +54,7 @@ const LoginPage: React.FC = () => {
 			const token = res?.data?.Token
 			Cookie.set('token', token) // cookieをセット
 			Router.push('/')
-		}
-		catch (e) {
+		} catch (e) {
 			setLoginErrorMessage(e.message)
 		}
 	}
@@ -69,14 +68,14 @@ const LoginPage: React.FC = () => {
 	 */
 	const login = async (loginForm: LoginForm) => {
 		const url = urljoin('/api/v1/auth/login/')
-		const res = await axiosUtil
-			.instance
+		const res = await axiosUtil.instance
 			.post(url, loginForm)
 			.then((res: AxiosResponse<any>) => {
 				// ログイン処理成功時
-				setLoginErrorMessage("")
+				setLoginErrorMessage('')
 				return res
-			}).catch((err) => {
+			})
+			.catch((err) => {
 				// TODO: エラーメッセージの分岐をswitch文で書き直す
 				if (err.response.status === 401) {
 					throw new Error('メールアドレスまたはパスワードどちらか正しくないです')
@@ -86,44 +85,13 @@ const LoginPage: React.FC = () => {
 	}
 	return (
 		<div className="loginBody">
-			<style jsx>{`
-				:global(.loginMessage) {
-					text-align: center;
-					background-color: #22272e;
-					color: #cdd9e5;
-					border-bottom: solid 0.1em #adbac7;
-				}
-				.inputForm {
-					border: 2px solid #ccc;
-					border-radius: 0px;
-					height: 25px;
-					width: 100%;
-					background-color: #ccc;
-				}
-				.inputFormParent {
-					text-align: center;
-					margin-bottom: 10px;
-				}
-				.formLabel {
-					float: left;
-				}
-				.inputFormRoot {
-					width: 75%;
-					margin: auto;
-				}
-				.loginButton {
-					border: 2px #adbac7 solid;
-				}
-				.loginBody {
-					background-color: #22272e;
-					color: #adbac7;
-				}
-			`}</style>
 			<h1 className="loginMessage">ログイン</h1>
 			<p>メールアドレスとパスワードを入力してください</p>
 			<form onSubmit={handleSubmit} className="inputFormRoot">
 				<div className="inputFormParent">
-					<label htmlFor="email" className="formLabel">email</label>
+					<label htmlFor="email" className="formLabel">
+						email
+					</label>
 					<input
 						type="email"
 						id="email"
@@ -135,7 +103,9 @@ const LoginPage: React.FC = () => {
 					/>
 				</div>
 				<div className="inputFormParent">
-					<label htmlFor="password" className="formLabel">password</label>
+					<label htmlFor="password" className="formLabel">
+						password
+					</label>
 					<input
 						type="password"
 						id="password"
@@ -146,7 +116,9 @@ const LoginPage: React.FC = () => {
 						className="inputForm"
 					/>
 				</div>
-				<button type="submit" className="loginButton">Login</button>
+				<button type="submit" className="loginButton">
+					Login
+				</button>
 				{loginErrorMessage}
 			</form>
 		</div>
