@@ -1,10 +1,10 @@
 export interface User {
-  ID: string
-  Name: string
-  Email: string
-  Password: string
-  IsAdmin: boolean
-  Deleted: string // TODO: 要検討
-  Created: string // TODO: 要検討
-  Modified: string // TODO: 要検討
+  id: string
+  name: string
+  email: string
+  password: string
+  is_admin: boolean
+  deleted: string // TODO: 要検討
+  created: string // TODO: 要検討
+  modified: string // TODO: 要検討
 }

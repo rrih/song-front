@@ -86,7 +86,7 @@ const LoginPage: React.FC = () => {
 
   // view
   return (
-    <div className="mx-10 mx-s-1">
+    <div className="sm:mx-10">
       <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <div className="mb-4">
           <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
@@ -123,10 +123,10 @@ const LoginPage: React.FC = () => {
           >
             Login
           </button>
-          <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
-            Forgot Password?
-          </a>
         </div>
+        <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+          Forgot Password?
+        </a>
         <p className="text-red-500 text-xs italic">{loginErrorMessage}</p>
       </form>
     </div>
