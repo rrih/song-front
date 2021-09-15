@@ -87,10 +87,10 @@ const LoginPage: React.FC = () => {
   // view
   return (
     <div className="sm:mx-10">
-      <form onSubmit={handleSubmit} className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <form onSubmit={handleSubmit} className="bg-blue-500 px-8 pb-8 mb-4">
         <div className="mb-4">
-          <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">
-            E-mail
+          <label htmlFor="email" className="block text-sm font-bold text-white mb-2">
+            メールアドレス
           </label>
           <input
             type="email"
@@ -99,12 +99,12 @@ const LoginPage: React.FC = () => {
             onChange={handleInputChange}
             value={loginForm.email}
             placeholder="roi@roiroi.dev"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
         <div className="mb-6">
-          <label htmlFor="password" className="block text-gray-700 text-sm font-bold mb-2">
-            Password
+          <label htmlFor="password" className="block text-white text-sm font-bold mb-2">
+            パスワード
           </label>
           <input
             type="password"
@@ -113,21 +113,18 @@ const LoginPage: React.FC = () => {
             onChange={handleInputChange}
             value={loginForm.password}
             placeholder="********"
-            className="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border  w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        <div className="flex items-center justify-between">
+        <div className="text-center">
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 border rounded px-10 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
           >
-            Login
+            ログイン
           </button>
         </div>
-        <a className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
-          Forgot Password?
-        </a>
-        <p className="text-red-500 text-xs italic">{loginErrorMessage}</p>
+        <p className="text-white text-xs pt-5">{loginErrorMessage}</p>
       </form>
     </div>
   )

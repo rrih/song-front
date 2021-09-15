@@ -29,13 +29,20 @@ const Layout: React.FC<Props> = ({ children, title = 'default title' }: Props) =
         {/* TODO: ログイン判定要検討 */}
         <nav className="flex items-center justify-between flex-wrap bg-blue-500 p-3">
           <div className="text-white">
-            Uta-Kanri
+            <Link href="/">
+              <a>Uta-Kanri</a>
+            </Link>
           </div>
           <div className="">
-            {Cookie.get('token')
-              ? <a onClick={() => logout()} className="text-white">ログアウト</a>
-              : <Link href="/auth/sign-in"><a className="text-white hover:border-transparent ">ログイン</a></Link>
-            }
+            {Cookie.get('token') ? (
+              <a onClick={() => logout()} className="text-white">
+                ログアウト
+              </a>
+            ) : (
+              <Link href="/auth/sign-in">
+                <a className="text-white hover:border-transparent ">ログイン</a>
+              </Link>
+            )}
           </div>
         </nav>
       </header>

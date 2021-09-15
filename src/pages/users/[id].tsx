@@ -15,7 +15,6 @@ const ViewUser = ({ user }): JSX.Element => {
   // console.log(Cookie.get('token'))
   const { data } = user
   const [viewUser, setViewUser] = useState<User>(data)
-  console.log(viewUser)
   return (
     <>
       {Cookie.get('token') ? (
@@ -25,7 +24,7 @@ const ViewUser = ({ user }): JSX.Element => {
             <div>id: {viewUser?.id}</div>
             <div>name: {viewUser?.name}</div>
             <div>email: {viewUser?.email}</div>
-            <div>password: {viewUser?.password}</div>
+            {/* <div>password: {viewUser?.password}</div> */}
             <div>created: {viewUser?.created}</div>
             <div>modified: {viewUser?.modified}</div>
             <div>deleted: {viewUser?.deleted ?? 'なし'}</div>
