@@ -6,6 +6,8 @@ Next.js
 
 dev
 ```bash
+node -v
+v16.11.0
 yarn -v
 1.22.15
 yarn && yarn dev
