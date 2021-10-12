@@ -30,7 +30,7 @@ const Layout: React.FC<Props> = ({ children, title = 'default title' }: Props) =
         <nav className="flex items-center justify-between flex-wrap bg-blue-500 p-3">
           <div className="text-white">
             <Link href="/">
-              <a>Uta-Kanri</a>
+              <a>Song-Score-Online</a>
             </Link>
           </div>
           <div className="">
@@ -49,9 +49,12 @@ const Layout: React.FC<Props> = ({ children, title = 'default title' }: Props) =
       {children}
       <footer>
         <p className="text-center text-gray-500 text-xs">
-          <Link href="https://github.com/rrih/managedby-next">
-            <a>GitHub</a>
-          </Link>
+          <div>&copy; Song-Score-Online {new Date().getFullYear()}</div>
+          <div>
+            <Link href="https://github.com/rrih/songscoreonline-next">
+              <a>GitHub</a>
+            </Link>
+          </div>
         </p>
       </footer>
     </div>

@@ -1,8 +1,8 @@
 {
-  "name": "managedby-next",
+  "name": "songscoreonline-next",
   "version": "0.0.1",
   "description": "nextjs",
-  "repository": "git@github.com:rrih/managedby-next.git",
+  "repository": "git@github.com:rrih/songscoreonline-next.git",
   "author": "rrih <rsklv@icloud.com>",
   "license": "MIT",
   "private": true,
