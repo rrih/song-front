@@ -1,0 +1,14 @@
+version: '3'
+services:
+  front:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sso-front
+    command: sh -c "yarn && yarn dev"
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/songscoreonline-next
+      - /songscoreonline-next/node_modules
+      - /songscoreonline-next/.next

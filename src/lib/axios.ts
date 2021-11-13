@@ -1,7 +1,9 @@
 import axios from 'axios'
 
 // TODO: 本番URLと動的に切り替えるようにする
-const baseURL = 'http://localhost:8080/'
+// baseURL = isProd ? 'https://song-score-online.herokuapp.com' : 'http://localhost:8080/';
+// const baseURL = process.env.API_BASE_URL
+const baseURL = 'http://localhost:8080';
 
 export const instance = axios.create({ baseURL })
 

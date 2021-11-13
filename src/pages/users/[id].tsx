@@ -46,6 +46,7 @@ const ViewUser = ({ user }): JSX.Element => {
  */
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   // {data: {users}}を受け取る
+  console.log('hoge')
   const user = await findUserById(params?.id as string)
   return { props: { user } }
 }

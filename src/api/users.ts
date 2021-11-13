@@ -14,5 +14,6 @@ export const findUserById = async (id: string) => {
   // TODO: axiosUtil.instance.get という呼び出し妥当か要検討
   // TODO: エラーハンドリング
   const { data } = await axiosUtil.instance.get(url)
+  console.log(data)
   return data
 }

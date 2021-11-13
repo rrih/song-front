@@ -5,7 +5,7 @@ import React from 'react'
 const UserIndexPage: React.FC = () => {
   return (
     <React.Fragment>
-      <h1>Hello Next.js 👋</h1>
+      <h1>管理権限ある人しかみれないようにする</h1>
     </React.Fragment>
   )
 }

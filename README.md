@@ -6,9 +6,6 @@ Next.js
 
 dev
 ```bash
-node -v
-v16.11.0
-yarn -v
-1.22.15
-yarn && yarn dev
+docker-compose up -d
 ```
+localhost:3000 にアクセス
