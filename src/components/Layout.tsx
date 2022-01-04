@@ -27,20 +27,20 @@ const Layout: React.FC<Props> = ({ children, title = 'default title' }: Props) =
       </Head>
       <header>
         {/* TODO: ログイン判定要検討 */}
-        <nav className="flex items-center justify-between flex-wrap bg-blue-500 p-3">
-          <div className="text-white">
+        <nav>
+          <div>
             <Link href="/">
               <a>Song-Score-Online</a>
             </Link>
           </div>
           <div className="">
             {Cookie.get('token') ? (
-              <a onClick={() => logout()} className="text-white">
+              <a onClick={() => logout()}>
                 ログアウト
               </a>
             ) : (
               <Link href="/auth/sign-in">
-                <a className="text-white hover:border-transparent ">ログイン</a>
+                <a>ログイン</a>
               </Link>
             )}
           </div>
@@ -48,7 +48,7 @@ const Layout: React.FC<Props> = ({ children, title = 'default title' }: Props) =
       </header>
       {children}
       <footer>
-        <p className="text-center text-gray-500 text-xs">
+        <p>
           <div>&copy; Song-Score-Online {new Date().getFullYear()}</div>
           <div>
             <Link href="https://github.com/rrih/songscoreonline-next">

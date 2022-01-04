@@ -6,8 +6,8 @@ import * as axiosUtil from '../../lib/axios'
 
 const MyPageIndex = ({ user }) => {
   // const [data, setData] = await findLoginUser(Cookie.get('token'))
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzE3MjU0MzEsInVzZXIiOiJ0ZXN0QGdtYWlsLmNvbSJ9.5xW9uiMi9SE9aZxvhTyHNGNQBr3BUDubGSTOVtMAhA8"
-  const [data, setData] = useState(null)
+  // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzE3MjU0MzEsInVzZXIiOiJ0ZXN0QGdtYWlsLmNvbSJ9.5xW9uiMi9SE9aZxvhTyHNGNQBr3BUDubGSTOVtMAhA8"
+  // const [data, setData] = useState(null)
   useEffect(() => {
     axiosUtil.setToken(token)
     console.log(Cookie.get('token'))
@@ -32,18 +32,18 @@ const MyPageIndex = ({ user }) => {
  * @param params { id: '1' }
  * @return { props: { user } }
  */
-// export const getServerSideProps: GetServerSideProps = async ({}) => {
-//   // console.log(Cookie.get('token'))
-//   // ログインユーザー情報を受け取る
-//   // /api/v1/mypage/ を叩いた結果
-//   // console.log(Cookie.get('token'))
-//   const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzE3MjU0MzEsInVzZXIiOiJ0ZXN0QGdtYWlsLmNvbSJ9.5xW9uiMi9SE9aZxvhTyHNGNQBr3BUDubGSTOVtMAhA8"
-//   const user = await findLoginUser(token)
-//   return {
-//     props: {
-//       user,
-//     }
-//   }
-// }
+export const getServerSideProps: GetServerSideProps = async ({}) => {
+  // console.log(Cookie.get('token'))
+  // ログインユーザー情報を受け取る
+  // /api/v1/mypage/ を叩いた結果
+  console.log(Cookie.get('token'))
+  // const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MzE3MjU0MzEsInVzZXIiOiJ0ZXN0QGdtYWlsLmNvbSJ9.5xW9uiMi9SE9aZxvhTyHNGNQBr3BUDubGSTOVtMAhA8"
+  const user = await findLoginUser(Cookie.get('token'))
+  return {
+    props: {
+      user
+    }
+  }
+}
 
 export default MyPageIndex

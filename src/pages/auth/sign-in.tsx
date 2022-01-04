@@ -86,10 +86,10 @@ const LoginPage: React.FC = () => {
 
   // view
   return (
-    <div className="sm:mx-10">
-      <form onSubmit={handleSubmit} className="bg-blue-500 px-8 pb-8 mb-4">
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-sm font-bold text-white mb-2">
+    <div>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="email">
             メールアドレス
           </label>
           <input
@@ -99,11 +99,10 @@ const LoginPage: React.FC = () => {
             onChange={handleInputChange}
             value={loginForm.email}
             placeholder="roi@roiroi.dev"
-            className="shadow appearance-none w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        <div className="mb-6">
-          <label htmlFor="password" className="block text-white text-sm font-bold mb-2">
+        <div>
+          <label htmlFor="password">
             パスワード
           </label>
           <input
@@ -113,18 +112,16 @@ const LoginPage: React.FC = () => {
             onChange={handleInputChange}
             value={loginForm.password}
             placeholder="********"
-            className="shadow appearance-none border  w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
-        <div className="text-center">
+        <div>
           <button
             type="submit"
-            className="bg-blue-500 hover:bg-blue-700 border rounded px-10 text-white font-bold py-2 px-4 focus:outline-none focus:shadow-outline"
           >
             ログイン
           </button>
         </div>
-        <p className="text-white text-xs pt-5">{loginErrorMessage}</p>
+        <p>{loginErrorMessage}</p>
       </form>
     </div>
   )
