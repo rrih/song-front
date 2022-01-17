@@ -1,33 +1,39 @@
 import { GetServerSideProps } from 'next'
 import { findUserById } from '../../api/users'
 import { User } from '../../interfaces/User'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Cookie from 'js-cookie'
-// import Layout from "../../components/Layout";
+import { useAuth } from '../../utils/useAuth'
+import { useUser } from '../../utils/useUser'
+import { isExistsToken } from '../../lib/axios'
+import { useRouter } from 'next/router'
 
 interface Props {
   user: User
 }
 
-const ViewUser = ({ user }): JSX.Element => {
-  // TODO: 認証挟む
-  // const [isLogin, setIsLogin] = useState(!!Cookie.get('token'))
-  // console.log(Cookie.get('token'))
-  const { data } = user
-  const [viewUser, setViewUser] = useState<User>(data)
+const ViewUser = (): JSX.Element => {
+  const router = useRouter();
+  const { id } = router.query;
+  const { isLoading, isLoggedIn, authObject, login, logout } = useAuth()
+  const { data } = useUser(String(id))
+  // TODO: 以下直す
+  // @ts-ignore
+  const user: User = data?.data?.data
+  // })
   return (
     <>
-      {Cookie.get('token') ? (
+      {isLoggedIn ? (
         <>
           <h1>ユーザー詳細画面</h1>
           <div>
-            <div>id: {viewUser?.id}</div>
-            <div>name: {viewUser?.name}</div>
-            <div>email: {viewUser?.email}</div>
+            <div>id: {user?.id}</div>
+            <div>name: {user?.name}</div>
+            <div>email: {user?.email}</div>
             {/* <div>password: {viewUser?.password}</div> */}
-            <div>created: {viewUser?.created}</div>
-            <div>modified: {viewUser?.modified}</div>
-            <div>deleted: {viewUser?.deleted ?? 'なし'}</div>
+            <div>created: {user?.created}</div>
+            <div>modified: {user?.modified}</div>
+            <div>deleted: {user?.deleted ?? 'なし'}</div>
           </div>
         </>
       ) : (
@@ -35,19 +41,6 @@ const ViewUser = ({ user }): JSX.Element => {
       )}
     </>
   )
-}
-
-/**
- * /users/:id にアクセスした時にサーバーサイドで実行される
- * /users/1 にアクセスした時に { id: '1' } が引数 params に渡される
- *
- * @param params { id: '1' }
- * @return { props: { user } }
- */
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  // {data: {users}}を受け取る
-  const user = await findUserById(params?.id as string)
-  return { props: { user } }
 }
 
 export default ViewUser
