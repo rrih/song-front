@@ -43,7 +43,6 @@ const LoginPage: React.FC = () => {
     if (!axiosUtil.isExistsToken()) {
       const token = Cookie.get('token')
       if (token != null) {
-        console.log('init set token')
         axiosUtil.setToken(token)
       }
     }
@@ -51,7 +50,7 @@ const LoginPage: React.FC = () => {
       const res = await login(loginForm)
       // TODO: あとで以下きちんと型付けする
       // @ts-ignore
-      const token = res?.data?.Token
+      const token: string = res?.data?.data?.token
       Cookie.set('token', token) // cookieをセット
       Router.push('/')
     } catch (e) {

@@ -1,9 +1,9 @@
-import axios from 'axios'
+import axios, { AxiosInstance } from 'axios'
 
 // TODO: 本番URLと動的に切り替えるようにする
-const baseURL = 'http://localhost:8080/'
+const baseURL = process.env.NODE_ENV === 'development' ? 'http://localhost:8080/' : 'https://song-score-online.herokuapp.com/'
 
-export const instance = axios.create({ baseURL })
+export const instance: AxiosInstance = axios.create({ baseURL })
 
 export const setToken = (token: string): void => {
   instance.defaults.headers.common.Authorization = `Bearer ${token}`

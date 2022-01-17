@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import Cookie from 'js-cookie'
 
 const IndexPage = () => {
   return (

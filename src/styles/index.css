@@ -1,3 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+.sso-layout-header-login-logout {
+  border-bottom: 1px solid black;
+}
+
+.sso-layout-footer {
+  border-top: 1px solid black;
+}
