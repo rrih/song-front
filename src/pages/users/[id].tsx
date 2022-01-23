@@ -15,7 +15,7 @@ interface Props {
 const ViewUser = (): JSX.Element => {
   const router = useRouter();
   const { id } = router.query;
-  const { isLoading, isLoggedIn, authObject, login, logout } = useAuth()
+  const { isLoading, isLoggedIn, login, logout } = useAuth()
   const { data } = useUser(String(id))
   // TODO: 以下直す
   // @ts-ignore

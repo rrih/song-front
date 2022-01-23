@@ -15,7 +15,7 @@ interface Props {
 }
 
 const Layout: React.FC<Props> = ({ children, title = 'default title' }: Props) => {
-  const { isLoading, isLoggedIn, authObject, login, logout } = useAuth()
+  const { isLoading, isLoggedIn, login, logout } = useAuth()
   
   return (
     <div>
